@@ -1,28 +1,36 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+  <div id="app" class="mx-auto px4 max-width-4 border-box">
+    <app-header></app-header>
+    <page></page>
+    <!-- <hello></hello> -->
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello';
+import AppHeader from 'components/AppHeader';
+import Page from 'components/Page';
+// import Hello from './components/Hello';
 
 export default {
   name: 'app',
   components: {
-    Hello,
+    AppHeader,
+    Page,
+    // Hello,
   },
 };
 </script>
 
 <style>
+@import "normalize.css";
+@import "styles/basscss.css";
+@import "styles/properties.css";
+/*@import "styles/variables.scss";*/
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: var(--text-color);
 }
 </style>

@@ -26,7 +26,8 @@ module.exports = {
       'vue$': 'vue/dist/vue.common.js',
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      'components': path.resolve(__dirname, '../src/components'),
+      'styles': path.resolve(__dirname, '../src/styles')
     }
   },
   resolveLoader: {
@@ -88,7 +89,9 @@ module.exports = {
     postcss: [
       require('autoprefixer')({
         browsers: ['last 2 versions']
-      })
+      }),
+      require('postcss-import')(),
+      require('postcss-custom-properties')()
     ]
   }
 }

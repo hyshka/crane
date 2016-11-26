@@ -1,4 +1,3 @@
-
 # Anatomies
 
 ## What are they?

@@ -12,6 +12,9 @@
 <script>
 import Block from 'components/Block';
 import AddBlockDialog from 'components/AddBlockDialog';
+import {
+    showDialog,
+  } from 'store/actions';
 
 export default {
   name: 'page',
@@ -19,48 +22,17 @@ export default {
     Block,
     AddBlockDialog,
   },
-  data() {
-    return {
-      showDialog: false,
-      blocks: [
-        {
-          title: 'Banner Image w/ Primary Message & CTA',
-          size: 'large',
-        },
-        {
-          title: 'Services',
-          size: 'medium',
-        },
-        {
-          title: 'About Us',
-          size: 'medium',
-        },
-        {
-          title: 'Resources / Updates / News',
-          size: 'medium',
-        },
-        {
-          title: 'Contact CTA',
-          size: 'small',
-        },
-        {
-          title: 'Footer',
-          size: 'small',
-        },
-      ],
-    };
-  },
-  methods: {
-    addBlock() {
-      console.log('add block');
-
-      this.blocks.push(
-        {
-          title: 'Footer',
-          size: 'small',
-        },
-      );
+  vuex: {
+    getters: {
+      showDialog: state => state.showDialog,
+      blocks: state => state.blocks,
     },
+    actions: {
+      showDialog,
+    },
+  },
+  created() {
+    // console.log(this);
   },
 };
 </script>

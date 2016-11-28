@@ -1,22 +1,27 @@
 <template>
   <div id="app" class="mx-auto px4 max-width-4 border-box">
     <app-header></app-header>
-    <page></page>
-    <!-- <hello></hello> -->
+    <!-- <page></page> -->
   </div>
 </template>
 
 <script>
 import AppHeader from 'components/AppHeader';
 import Page from 'components/Page';
-// import Hello from './components/Hello';
 
 export default {
   name: 'app',
   components: {
     AppHeader,
     Page,
-    // Hello,
+  },
+  vuex: {
+    getters: {
+      blocks: state => state.blocks,
+    },
+  },
+  created() {
+    console.log(this.blocks);
   },
 };
 </script>

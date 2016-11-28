@@ -36,4 +36,4 @@ $text-color: #1e1e1e;
 
 # 
 - page
-  - block (title/textarea, size, )
+  - block (title, size)

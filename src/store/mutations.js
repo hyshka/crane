@@ -6,6 +6,7 @@ export default {
   * Blocks
   */
   ADD_BLOCK(state) {
+    console.log('add block');
     state.blocks.push(
       {
         title: 'Footer',
@@ -18,10 +19,12 @@ export default {
   * Size Dialog
   */
   SHOW_DIALOG(state) {
-    state.showDialog = true;
+    console.log('show dialog');
+    state.dialog.isOpen = true;
   },
 
   HIDE_DIALOG(state) {
-    state.showDialog = false;
+    console.log('hide dialog');
+    state.dialog.isOpen = false;
   },
 };

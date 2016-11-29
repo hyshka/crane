@@ -1,28 +1,31 @@
 <template>
   <div id="app" class="mx-auto px4 max-width-4 border-box">
     <app-header></app-header>
-    <!-- <page></page> -->
+    <page></page>
   </div>
 </template>
 
 <script>
 import AppHeader from 'components/AppHeader';
 import Page from 'components/Page';
+import store from 'store/index';
+// import { mapActions, mapGetters } from 'vuex'
 
 export default {
+  store,
   name: 'app',
   components: {
     AppHeader,
     Page,
   },
-  vuex: {
-    getters: {
-      blocks: state => state.blocks,
-    },
-  },
-  created() {
-    console.log(this.blocks);
-  },
+  // computed: mapGetters([
+  //   'countPlural',
+  // ]),
+  // methods: {
+  //   ...mapActions([
+  //     'increment',
+  //   ]),
+  // },
 };
 </script>
 

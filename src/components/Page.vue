@@ -4,17 +4,15 @@
       v-for="block in blocks"
       :initial-title="block.title"
       :initial-size="block.size"></block>
-    <button @click="showDialog = true">Add Block</button>
-    <add-block-dialog v-if="showDialog" @close="showDialog = false"></add-block-dialog>
+    <button @click="showDialog">Add Block</button>
+    <add-block-dialog v-if="dialogIsOpen" @close="hideDialog = false"></add-block-dialog>
   </div>
 </template>
 
 <script>
 import Block from 'components/Block';
 import AddBlockDialog from 'components/AddBlockDialog';
-import {
-    showDialog,
-  } from 'store/actions';
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'page',
@@ -22,17 +20,23 @@ export default {
     Block,
     AddBlockDialog,
   },
-  vuex: {
-    getters: {
-      showDialog: state => state.showDialog,
-      blocks: state => state.blocks,
-    },
-    actions: {
-      showDialog,
-    },
+  computed: mapGetters([
+    'blocks',
+    'blocks',
+  ]),
+  methods: {
+    ...mapActions([
+      'showDialog',
+      'hideDialog',
+    ]),
   },
-  created() {
-    // console.log(this);
+  computed: {
+    blocks() {
+      return this.$store.state.blocks;
+    },
+    dialogIsOpen() {
+      return this.$store.state.dialog.isOpen;
+    },
   },
 };
 </script>

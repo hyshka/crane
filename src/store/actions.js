@@ -1,3 +1,7 @@
+// function makeAction(type) {
+//   return ({ dispatch }, ...args) => dispatch(type, ...args);
+// }
+
 export default {
   /*
   * Size Dialog
@@ -12,7 +16,9 @@ export default {
   /*
   * Blocks
   */
-  addBlock({ commit }) {
-    commit('ADD_BLOCK');
+  addBlock({ commit }, data) {
+    commit('ADD_BLOCK', data);
   },
 };
+
+// export const setMessage = makeAction('SET_MESSAGE');

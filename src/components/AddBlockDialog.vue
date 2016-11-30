@@ -9,20 +9,20 @@
       <div class="modal-container flex-auto max-width-2 mx-auto p3 rounded">
         <p class="h2 mt0">
           <label>Title:
-            <input type="text" :value="title">
+            <input type="text" v-model="block.title">
           </label>
         </p>
-        <p class="h2">Size: 
-          <template v-for="size in sizes">
+        <p class="h2">Size:
+          <template v-for="size in availableSizes">
             <input type="radio"
               :id="size"
               :value="size"
               name="size"
-              v-model="currentsize">
+              v-model="block.size">
             <label :for="size">{{ size }}</label>
           </template>
         </p>
-        <button class="modal-default-button" @click="hideDialog">
+        <button class="modal-default-button" @click="addBlock(block)">
           Add Block
         </button>
       </div>
@@ -37,18 +37,20 @@ export default {
   name: 'add-block-dialog',
   data() {
     return {
-      currentsize: '',
-      sizes: [
+      block: {
+        title: '',
+        size: '',
+      },
+      availableSizes: [
         'small',
         'medium',
         'large',
       ],
-      title: '',
     };
   },
   methods: {
     ...mapActions([
-      'hideDialog',
+      'addBlock',
     ]),
   },
 };

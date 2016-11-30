@@ -17,13 +17,9 @@ export default {
   /*
   * Blocks
   */
-  ADD_BLOCK(state) {
-    console.log('add block');
-    state.blocks.push(
-      {
-        title: 'Footer',
-        size: 'small',
-      },
-    );
+  ADD_BLOCK(state, data) {
+    console.log('add block', data);
+    state.dialog.isOpen = false;
+    state.blocks.push(data);
   },
 };

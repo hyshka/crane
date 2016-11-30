@@ -5,14 +5,14 @@
       :initial-title="block.title"
       :initial-size="block.size"></block>
     <button @click="showDialog">Add Block</button>
-    <add-block-dialog v-if="dialogIsOpen" @close="hideDialog = false"></add-block-dialog>
+    <add-block-dialog v-if="dialogIsOpen" @close="hideDialog"></add-block-dialog>
   </div>
 </template>
 
 <script>
 import Block from 'components/Block';
 import AddBlockDialog from 'components/AddBlockDialog';
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions } from 'vuex';
 
 export default {
   name: 'page',
@@ -20,10 +20,6 @@ export default {
     Block,
     AddBlockDialog,
   },
-  computed: mapGetters([
-    'blocks',
-    'blocks',
-  ]),
   methods: {
     ...mapActions([
       'showDialog',

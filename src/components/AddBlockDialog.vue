@@ -22,7 +22,7 @@
             <label :for="size">{{ size }}</label>
           </template>
         </p>
-        <button class="modal-default-button" @click="$emit('close')">
+        <button class="modal-default-button" @click="hideDialog">
           Add Block
         </button>
       </div>
@@ -31,10 +31,13 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'add-block-dialog',
   data() {
     return {
+      currentsize: '',
       sizes: [
         'small',
         'medium',
@@ -42,6 +45,11 @@ export default {
       ],
       title: '',
     };
+  },
+  methods: {
+    ...mapActions([
+      'hideDialog',
+    ]),
   },
 };
 </script>

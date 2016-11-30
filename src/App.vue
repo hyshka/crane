@@ -9,7 +9,6 @@
 import AppHeader from 'components/AppHeader';
 import Page from 'components/Page';
 import store from 'store/index';
-// import { mapActions, mapGetters } from 'vuex'
 
 export default {
   store,
@@ -18,14 +17,6 @@ export default {
     AppHeader,
     Page,
   },
-  // computed: mapGetters([
-  //   'countPlural',
-  // ]),
-  // methods: {
-  //   ...mapActions([
-  //     'increment',
-  //   ]),
-  // },
 };
 </script>
 

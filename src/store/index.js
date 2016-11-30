@@ -6,16 +6,13 @@ import createLogger from 'vuex/dist/logger';
 import state from 'store/state';
 import actions from 'store/actions';
 import mutations from 'store/mutations';
+import getters from 'store/getters';
+
 
 Vue.use(Vuex);
 
 const debug = process.env.NODE_ENV !== 'production';
 Vue.config.debug = debug;
-
-const getters = {
-  // blocks: () => state.blocks,
-  // dialogIsOpen: () => state.dialog.isOpen,
-};
 
 export default new Vuex.Store({
   state,

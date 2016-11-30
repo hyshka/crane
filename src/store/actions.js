@@ -1,10 +1,18 @@
-// generic actions
-export function showDialog({ commit }) {
-  commit('showDialog');
-}
-export function hideDialog({ commit }) {
-  commit('hideDialog');
-}
-export function addBlock({ commit }) {
-  commit('addBlock');
-}
+export default {
+  /*
+  * Size Dialog
+  */
+  showDialog({ commit }) {
+    commit('SHOW_DIALOG');
+  },
+  hideDialog({ commit }) {
+    commit('HIDE_DIALOG');
+  },
+
+  /*
+  * Blocks
+  */
+  addBlock({ commit }) {
+    commit('ADD_BLOCK');
+  },
+};

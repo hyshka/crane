@@ -1,4 +1,3 @@
-// import { createAction, handleAction, handleMutations, $inject } from 'vuex-actions';
 import { handleMutations } from 'vuex-actions';
 
 // Disable this rule for this file only

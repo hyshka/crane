@@ -1,5 +1,6 @@
 <template>
   <div class="block-item border-bottom flex items-center" :class="block.size">
+    <add-block-dialog v-if="dialogIsOpen"></add-block-dialog>
     <label class="label block mx-auto h1 m0 center caps"
       :class="{ 'display-none': block == editedBlock }"
       @dblclick="editTodo(block)">{{ block.title }}</label>
@@ -14,12 +15,21 @@
 </template>
 
 <script>
+import AddBlockDialog from 'components/AddBlockDialog';
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'block',
+  components: {
+    AddBlockDialog,
+  },
   props: {
     initialTitle: String,
     initialSize: String,
   },
+  computed: mapGetters([
+    'dialogIsOpen',
+  ]),
   data() {
     return {
       editedBlock: null,

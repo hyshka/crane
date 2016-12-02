@@ -24,12 +24,11 @@ export default {
 @import "normalize.css";
 @import "styles/basscss.css";
 @import "styles/properties.css";
-/*@import "styles/variables.scss";*/
 
 #app {
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--text-color);
+  color: var(--textColor);
 }
 </style>

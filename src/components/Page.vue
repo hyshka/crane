@@ -4,39 +4,43 @@
       v-for="block in blocks"
       :initial-title="block.title"
       :initial-size="block.size"></block>
-    <button @click="showDialog">Add Block</button>
-    <add-block-dialog v-if="dialogIsOpen"></add-block-dialog>
+    <add-button></add-button>
+    <size-selector v-if="dialogIsOpen"></size-selector>
   </div>
 </template>
 
 <script>
 import Block from 'components/Block';
-import AddBlockDialog from 'components/AddBlockDialog';
-import { mapActions, mapGetters } from 'vuex';
+import AddButton from 'components/AddButton';
+import SizeSelector from 'components/SizeSelector';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'page',
   components: {
     Block,
-    AddBlockDialog,
+    AddButton,
+    SizeSelector,
   },
   computed: mapGetters([
     'blocks',
     'dialogIsOpen',
   ]),
-  methods: {
-    ...mapActions([
-      'showDialog',
-    ]),
-  },
+  // methods: {
+  //   ...mapActions([
+  //     'showDialog',
+  //   ]),
+  // },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@import "../styles/properties.css";
+
 .page {
-  border-style: dashed;
-  border-color: var(--border-color);
+  border-style: var(--borderStyle);
+  border-color: var(--borderColor);
   border-bottom: 0;
 }
 </style>

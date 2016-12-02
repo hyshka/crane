@@ -7,11 +7,6 @@
   <transition name="modal">
     <div class="modal-mask fixed z4 top-0 left-0 bottom-0 right-0 flex items-center">
       <div class="modal-container flex-auto max-width-2 mx-auto p3 rounded">
-        <p class="h2 mt0">
-          <label>Title:
-            <input type="text" v-model="block.title">
-          </label>
-        </p>
         <p class="h2">Size:
           <template v-for="size in availableSizes">
             <input type="radio"

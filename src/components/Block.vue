@@ -1,6 +1,5 @@
 <template>
   <div class="block-item border-bottom flex items-center" :class="block.size">
-    <add-block-dialog v-if="dialogIsOpen"></add-block-dialog>
     <label class="label block mx-auto h1 m0 center caps"
       :class="{ 'display-none': block == editedBlock }"
       @dblclick="editTodo(block)">{{ block.title }}</label>
@@ -15,13 +14,13 @@
 </template>
 
 <script>
-import AddBlockDialog from 'components/AddBlockDialog';
+// import AddBlockDialog from 'components/AddBlockDialog';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'block',
   components: {
-    AddBlockDialog,
+    // AddBlockDialog,
   },
   props: {
     initialTitle: String,
@@ -69,9 +68,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@import "../styles/properties.css";
+
 .block-item {
-  border-bottom-style: dashed;
-  border-bottom-color: var(--border-color);
+  border-bottom-style: var(--borderStyle);
+  border-bottom-color: var(--borderColor);
 }
 
 .small {

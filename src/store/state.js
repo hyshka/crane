@@ -2,30 +2,64 @@ export default {
   dialog: {
     isOpen: false,
   },
-  blocks: [
+  projects: [
     {
-      title: 'Banner Image w/ Primary Message & CTA',
-      size: 'large',
-    },
-    {
-      title: 'Services',
-      size: 'medium',
-    },
-    {
-      title: 'About Us',
-      size: 'medium',
-    },
-    {
-      title: 'Resources / Updates / News',
-      size: 'medium',
-    },
-    {
-      title: 'Contact CTA',
-      size: 'small',
-    },
-    {
-      title: 'Footer',
-      size: 'small',
+      title: 'Lift Interactive',
+      pages: [
+        {
+          title: 'Home',
+          rows: [
+            {
+              size: 'large',
+              blocks: [
+                {
+                  title: 'Banner Image w/ Primary Message & CTA',
+                },
+              ],
+            },
+            {
+              size: 'medium',
+              blocks: [
+                {
+                  title: 'Services',
+                },
+              ],
+            },
+            {
+              size: 'medium',
+              blocks: [
+                {
+                  title: 'About Us',
+                },
+              ],
+            },
+            {
+              size: 'medium',
+              blocks: [
+                {
+                  title: 'Resources / Updates / News',
+                },
+              ],
+            },
+            {
+              size: 'small',
+              blocks: [
+                {
+                  title: 'Contact CTA',
+                },
+              ],
+            },
+            {
+              size: 'small',
+              blocks: [
+                {
+                  title: 'Footer',
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
   ],
 };

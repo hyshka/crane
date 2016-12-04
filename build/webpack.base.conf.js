@@ -88,13 +88,16 @@ module.exports = {
   vue: {
     loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
     postcss: [
+      require('postcss-import')(),
+      require('postcss-custom-media')(),
+      require('postcss-custom-properties')(),
+      require('postcss-calc')(),
+      require('postcss-color-function')(),
+      require('postcss-discard-comments')(),
+      require('postcss-nesting')(),
       require('autoprefixer')({
         browsers: ['last 2 versions']
       }),
-      require('postcss-import')(),
-      require('postcss-custom-properties')()
-      // require('postcss-nested')(),
-      // require('postcss-cssnext')(),
     ]
   }
 }

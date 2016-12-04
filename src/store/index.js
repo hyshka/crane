@@ -1,5 +1,3 @@
-// Disable this rule for this file only
-/* eslint-disable no-param-reassign */
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';

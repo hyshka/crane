@@ -1,24 +1,19 @@
 <template>
-<!--   <div class="py3 flex items-baseline">
-    <h1 class="h1 bold left-align m0 flex-auto">{{ company_title }} Anatomies</h1>
-    <h2 class="h2 regular right-align m0">{{ page_title }} Page</h2>
-  </div> -->
-
   <transition name="modal">
-    <div class="modal-mask fixed z4 top-0 left-0 bottom-0 right-0 flex items-center">
-      <div class="modal-container flex-auto max-width-2 mx-auto p3 rounded">
-        <p class="h2">Size:
+    <div class="modal-container absolute left-0 right-0 z4">
+      <div class="modal-content relative max-width-1 mx-auto p2 rounded">
+        <p class="h2 mt0 mb2">
           <template v-for="size in availableSizes">
             <input type="radio"
               :id="size"
               :value="size"
               name="size"
-              v-model="block.size">
-            <label :for="size">{{ size }}</label>
+              v-model="row.size">
+            <label :for="size" class="mr2">{{ size }}</label>
           </template>
         </p>
-        <button class="modal-default-button" @click="addBlock(block)">
-          Add Block
+        <button class="" @click="$emit('close'); createRow(row);">
+          Add Row
         </button>
       </div>
     </div>
@@ -32,8 +27,7 @@ export default {
   name: 'add-block-dialog',
   data() {
     return {
-      block: {
-        title: '',
+      row: {
         size: '',
       },
       availableSizes: [
@@ -45,7 +39,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'addBlock',
+      'createRow',
     ]),
   },
 };
@@ -53,15 +47,30 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.modal-mask {
-  background-color: rgba(0, 0, 0, .5);
-  transition: opacity .3s ease;
-}
+@import "../styles/properties.css";
 
 .modal-container {
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-  transition: all .3s ease;
+  top: 58px;
+  transition: all var(--transitionDuration) var(--transitionTiming);
+}
+
+.modal-content {
+  background-color: var(--sizeSelectorBackground);
+  /*box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);*/
+
+  &::before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid var(--sizeSelectorBackground);
+  }
 }
 
 /* transition styles */

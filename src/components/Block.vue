@@ -1,5 +1,5 @@
 <template>
-  <div class="block-item border-bottom flex items-center" :class="block.size">
+  <div class="block-item flex items-center">
     <label class="label block mx-auto h1 m0 center caps"
       :class="{ 'display-none': block == editedBlock }"
       @dblclick="editTodo(block)">{{ block.title }}</label>
@@ -15,7 +15,7 @@
 
 <script>
 // import AddBlockDialog from 'components/AddBlockDialog';
-import { mapGetters } from 'vuex';
+// import { mapGetters } from 'vuex';
 
 export default {
   name: 'block',
@@ -26,9 +26,9 @@ export default {
     initialTitle: String,
     initialSize: String,
   },
-  computed: mapGetters([
-    'dialogIsOpen',
-  ]),
+  // computed: mapGetters([
+  //   'dialogIsOpen',
+  // ]),
   data() {
     return {
       editedBlock: null,
@@ -71,37 +71,15 @@ export default {
 @import "../styles/properties.css";
 
 .block-item {
-  border-bottom-style: var(--borderStyle);
-  border-bottom-color: var(--borderColor);
-}
-
-.small {
-  /*padding-top: 2rem;*/
-  /*padding-bottom: 2rem;*/
-  height: 100px;
-}
-
-.medium {
-  /*padding-top: 8rem;*/
-  /*padding-bottom: 8rem;*/
-  height: 300px;
-}
-
-.large {
-  /*padding-top: 12rem;*/
-  /*padding-bottom: 12rem;*/
-  height: 400px;
-}
-
-.caps {
-  letter-spacing: 0;
+  width: 100%;
+  /*border-bottom-style: var(--borderStyle);
+  border-bottom-color: var(--borderColor);*/
 }
 
 textarea {
   width: 100%;
   outline: none;
   resize: none;
-  /*vertical-align: middle;*/
 }
 
 .label {

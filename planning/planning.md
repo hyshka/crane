@@ -33,7 +33,3 @@ $text-color: #1e1e1e;
 
 # Border styles
 - 2px dashed $border-color
-
-# 
-- page
-  - block (title, size)

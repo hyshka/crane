@@ -1,36 +1,29 @@
 <template>
   <div class="page border mb4">
-    <block
-      v-for="block in blocks"
-      :initial-title="block.title"
-      :initial-size="block.size"></block>
-    <add-button></add-button>
-    <size-selector v-if="dialogIsOpen"></size-selector>
+    <template v-for="row in page.rows">
+      <create-row-button></create-row-button>
+      <row :row="row"></row>
+    </template>
+    <create-row-button></create-row-button>
   </div>
 </template>
 
 <script>
-import Block from 'components/Block';
-import AddButton from 'components/AddButton';
-import SizeSelector from 'components/SizeSelector';
-import { mapGetters } from 'vuex';
+import Row from 'components/Row';
+import CreateRowButton from 'components/CreateRowButton';
 
 export default {
   name: 'page',
   components: {
-    Block,
-    AddButton,
-    SizeSelector,
+    Row,
+    CreateRowButton,
   },
-  computed: mapGetters([
-    'blocks',
-    'dialogIsOpen',
-  ]),
-  // methods: {
-  //   ...mapActions([
-  //     'showDialog',
-  //   ]),
-  // },
+  props: {
+    page: {
+      type: Object,
+      default: () => {},
+    },
+  },
 };
 </script>
 

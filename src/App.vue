@@ -1,22 +1,24 @@
 <template>
-  <div id="app" class="mx-auto px4 max-width-4 border-box">
-    <app-header></app-header>
-    <page></page>
+  <div id="app">
+    <project
+      v-for="project in projects"
+      :project="project">
+    </project>
   </div>
 </template>
 
 <script>
-import AppHeader from 'components/AppHeader';
-import Page from 'components/Page';
-import store from 'store/index';
+import Project from 'components/Project';
+import { mapGetters } from 'vuex';
 
 export default {
-  store,
   name: 'app',
   components: {
-    AppHeader,
-    Page,
+    Project,
   },
+  computed: mapGetters([
+    'projects',
+  ]),
 };
 </script>
 

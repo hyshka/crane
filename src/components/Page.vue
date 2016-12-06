@@ -1,7 +1,8 @@
 <template>
   <div class="page border mb4">
-    <template v-for="row in page.rows">
-      <create-row-button></create-row-button>
+    <template v-for="(row, index) in page.rows">
+      <create-row-button
+        :index="index"></create-row-button>
       <row :row="row"></row>
     </template>
     <create-row-button></create-row-button>

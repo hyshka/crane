@@ -25,10 +25,19 @@ import { mapActions } from 'vuex';
 
 export default {
   name: 'add-block-dialog',
+  props: {
+    index: Number,
+  },
   data() {
     return {
       row: {
         size: '',
+        blocks: [
+          {
+            title: 'New Row',
+          },
+        ],
+        index: this.index,
       },
       availableSizes: [
         'small',
@@ -41,6 +50,9 @@ export default {
     ...mapActions([
       'createRow',
     ]),
+  },
+  created() {
+    console.log('size index', this.index);
   },
 };
 </script>
@@ -65,8 +77,8 @@ export default {
     top: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 10px solid var(--sizeSelectorBackground);

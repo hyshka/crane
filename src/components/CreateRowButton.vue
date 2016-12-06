@@ -1,6 +1,9 @@
 <template>
   <div class="center relative button-wrapper">
-    <size-selector v-if="showSelector" @close="showSelector = false"></size-selector>
+    <size-selector
+      v-if="showSelector"
+      :index="index"
+      @close="showSelector = false"></size-selector>
     <button class="button h1 p2 border-none" @click="showSelector = !showSelector">
       +
     </button>
@@ -16,15 +19,13 @@ export default {
   components: {
     SizeSelector,
   },
+  props: {
+    index: Number,
+  },
   data() {
     return {
       showSelector: false,
     };
-  },
-  methods: {
-    // showSelector() {
-    //   this.selectorIsOpen = true;
-    // },
   },
 };
 </script>

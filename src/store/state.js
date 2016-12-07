@@ -37,7 +37,10 @@ export default {
               size: 'medium',
               blocks: [
                 {
-                  title: 'Resources / Updates / News',
+                  title: 'Resources / Updates',
+                },
+                {
+                  title: 'News',
                 },
               ],
             },

@@ -1,8 +1,8 @@
 <template>
-  <div class="page border mb4">
-    <template v-for="row in page.rows">
+  <div class="page mb4">
+    <template v-for="(row, index) in page.rows">
       <create-row-button></create-row-button>
-      <row :row="row"></row>
+      <row :row="row" :class="{first: index == 0}"></row>
     </template>
     <create-row-button></create-row-button>
   </div>
@@ -31,9 +31,8 @@ export default {
 <style scoped>
 @import "../styles/properties.css";
 
-.page {
+/*.page {
   border-style: var(--borderStyle);
   border-color: var(--borderColor);
-  border-bottom: 0;
-}
+}*/
 </style>

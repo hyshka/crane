@@ -1,5 +1,5 @@
 <template>
-  <div class="block-item flex items-center">
+  <div class="block-item flex items-center border-right">
     <label class="label block mx-auto h1 m0 center caps"
       :class="{ 'display-none': block == editedBlock }"
       @dblclick="editTodo(block)">{{ block.title }}</label>
@@ -72,8 +72,13 @@ export default {
 
 .block-item {
   width: 100%;
-  /*border-bottom-style: var(--borderStyle);
-  border-bottom-color: var(--borderColor);*/
+  border-right-style: var(--borderStyle);
+  border-right-color: var(--borderColor);
+  border-top: 0;
+}
+
+.first {
+  border-left: 1px var(--borderStyle) var(--borderColor);
 }
 
 textarea {

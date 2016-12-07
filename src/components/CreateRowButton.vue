@@ -1,7 +1,7 @@
 <template>
   <div class="center relative button-wrapper">
     <size-selector v-if="showSelector" @close="showSelector = false"></size-selector>
-    <button class="button h1 p2 border-none" @click="showSelector = !showSelector">
+    <button class="button h1 p2 border-none circle absolute" @click="showSelector = !showSelector">
       +
     </button>
   </div>
@@ -34,7 +34,6 @@ export default {
 @import "../styles/properties.css";
 
 .button-wrapper {
-  margin-top: -24px;
   transition: all var(--transitionDuration) var(--transitionTiming);
   opacity: 0;
 
@@ -47,8 +46,10 @@ export default {
   outline: none;
   background-color: var(--buttonBackground);
   line-height: 1rem;
-  border-radius: 50%;
   color: var(--buttonColor);
   cursor: pointer;
+  margin-top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 </style>

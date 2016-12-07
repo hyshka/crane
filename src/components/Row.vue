@@ -1,9 +1,10 @@
 <template>
   <div class="row border-bottom flex" :class="row.size">
     <block
-      v-for="block in row.blocks"
+      v-for="(block, index) in row.blocks"
       :initial-title="block.title"
-      :initial-size="block.size"></block>
+      :initial-size="block.size"
+      :class="{first: index == 0}"></block>
   </div>
 </template>
 
@@ -35,6 +36,10 @@ export default {
 .row {
   border-bottom-style: var(--borderStyle);
   border-bottom-color: var(--borderColor);
+}
+
+.first {
+  border-top: 1px var(--borderStyle) var(--borderColor);
 }
 
 .small {

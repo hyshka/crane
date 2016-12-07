@@ -2,7 +2,7 @@
   <div class="block-item flex items-center border-right">
     <label class="label block mx-auto h1 m0 center caps"
       :class="{ 'display-none': block == editedBlock }"
-      @dblclick="editTodo(block)">{{ block.title }}</label>
+      @dblclick="editTodo(block)">{{ initialTitle }}</label>
     <textarea class="edit h1 m0 p0 border-none border-box center caps" type="text"
       :class="{ 'display-none': block != editedBlock }"
       v-model="block.title"
@@ -24,7 +24,6 @@ export default {
   },
   props: {
     initialTitle: String,
-    initialSize: String,
   },
   // computed: mapGetters([
   //   'dialogIsOpen',
@@ -34,7 +33,6 @@ export default {
       editedBlock: null,
       block: {
         title: this.initialTitle,
-        size: this.initialSize,
       },
     };
   },

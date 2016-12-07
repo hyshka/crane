@@ -33,12 +33,18 @@ export default handleMutations({
 
     const row = {
       size: mutation.size,
-      blocks: mutation.blocks,
+      blocks: [
+        {
+          title: 'New Row',
+        },
+      ],
     };
 
-    console.log('past rows', state.projects[0].pages[0].rows);
-    state.projects[0].pages[0].rows.splice(mutation.index, 0, row);
-    console.log('new rows', state.projects[0].pages[0].rows);
+    if (mutation.index) {
+      state.projects[0].pages[0].rows.splice(mutation.index, 0, row);
+    } else {
+      state.projects[0].pages[0].rows.push(row);
+    }
   },
   DELETE_ROW: (state, mutation) => {
     console.log('delete row', mutation);

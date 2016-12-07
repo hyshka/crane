@@ -3,7 +3,6 @@
     <block
       v-for="(block, index) in row.blocks"
       :initial-title="block.title"
-      :initial-size="block.size"
       :class="{first: index == 0}"></block>
   </div>
 </template>

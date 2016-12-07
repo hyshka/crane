@@ -32,11 +32,6 @@ export default {
     return {
       row: {
         size: '',
-        blocks: [
-          {
-            title: 'New Row',
-          },
-        ],
         index: this.index,
       },
       availableSizes: [
@@ -50,9 +45,6 @@ export default {
     ...mapActions([
       'createRow',
     ]),
-  },
-  created() {
-    console.log('size index', this.index);
   },
 };
 </script>

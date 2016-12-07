@@ -30,6 +30,15 @@ export default handleMutations({
   */
   CREATE_ROW: (state, mutation) => {
     console.log('create row', mutation);
+
+    const row = {
+      size: mutation.size,
+      blocks: mutation.blocks,
+    };
+
+    console.log('past rows', state.projects[0].pages[0].rows);
+    state.projects[0].pages[0].rows.splice(mutation.index, 0, row);
+    console.log('new rows', state.projects[0].pages[0].rows);
   },
   DELETE_ROW: (state, mutation) => {
     console.log('delete row', mutation);

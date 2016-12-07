@@ -65,7 +65,7 @@ export default handleMutations({
     console.log('delete block', mutation);
   },
   UPDATE_BLOCK: (state, mutation) => {
-    console.log('update block', mutation);
+    console.log('update block', mutation.target.value);
   },
 
   /*

@@ -2,7 +2,8 @@
   <div class="row border-bottom flex" :class="row.size">
     <block
       v-for="(block, index) in row.blocks"
-      :initial-title="block.title"
+      :title="block.title"
+      :index="index"
       :class="{first: index == 0}"></block>
   </div>
 </template>

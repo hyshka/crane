@@ -1,14 +1,15 @@
 <template>
   <div class="block-item flex items-center border-right">
     <label class="label block mx-auto h1 m0 center caps"
-      :class="{ 'display-none': block == editedBlock }"
-      @dblclick="editTodo(block)">{{ initialTitle }}</label>
+      :class="{ 'display-none': isEditing }"
+      @dblclick="isEditing = !isEditing">{{ title }}</label>
     <textarea class="edit h1 m0 p0 border-none border-box center caps" type="text"
-      :class="{ 'display-none': block != editedBlock }"
-      v-model="block.title"
-      v-block-focus="block == editedBlock"
-      @blur="doneEdit(block)"
-      @keyup.esc="cancelEdit(block)">
+      :class="{ 'display-none': !isEditing }"
+      :value="title"
+      v-block-focus=""
+      @input="updateBlock"
+      @blur="isEditing = !isEditing"
+      @keyup.esc="isEditing = !isEditing">
     </textarea>
   </div>
 </template>
@@ -16,6 +17,7 @@
 <script>
 // import AddBlockDialog from 'components/AddBlockDialog';
 // import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'block',
@@ -23,33 +25,37 @@ export default {
     // AddBlockDialog,
   },
   props: {
-    initialTitle: String,
+    title: String,
+    index: Number,
   },
   // computed: mapGetters([
   //   'dialogIsOpen',
   // ]),
   data() {
     return {
-      editedBlock: null,
-      block: {
-        title: this.initialTitle,
-      },
+      isEditing: false,
+      // block: {
+      //   title: this.initialTitle,
+      // },
     };
   },
   methods: {
-    editTodo(block) {
-      this.editedBlock = block;
-    },
-    doneEdit(block) {
-      if (!this.editedBlock) {
-        return;
-      }
-      this.editedBlock = null;
-      this.block.title = block.title.trim();
-    },
-    cancelEdit() {
-      this.editedBlock = null;
-    },
+    ...mapActions([
+      'updateBlock',
+    ]),
+    // editTodo(block) {
+    //   this.editedBlock = block;
+    // },
+    // doneEdit(block) {
+    //   if (!this.editedBlock) {
+    //     return;
+    //   }
+    //   this.editedBlock = null;
+    //   this.block.title = block.title.trim();
+    // },
+    // cancelEdit() {
+    //   this.editedBlock = null;
+    // },
   },
   // a custom directive to wait for the DOM to be updated
   // before focusing on the input field.

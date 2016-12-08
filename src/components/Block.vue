@@ -7,7 +7,7 @@
       :class="{ 'display-none': !isEditing }"
       :value="title"
       v-block-focus=""
-      @input="updateBlock"
+      @input="buildBlock"
       @blur="isEditing = !isEditing"
       @keyup.esc="isEditing = !isEditing">
     </textarea>
@@ -27,6 +27,7 @@ export default {
   props: {
     title: String,
     index: Number,
+    rowIndex: Number,
   },
   // computed: mapGetters([
   //   'dialogIsOpen',
@@ -43,6 +44,15 @@ export default {
     ...mapActions([
       'updateBlock',
     ]),
+    buildBlock(event) {
+      const mutation = {
+        title: event.target.value,
+        index: this.index,
+        rowIndex: this.rowIndex,
+      };
+
+      this.updateBlock(mutation);
+    },
     // editTodo(block) {
     //   this.editedBlock = block;
     // },

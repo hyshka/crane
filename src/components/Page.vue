@@ -3,7 +3,10 @@
     <template v-for="(row, index) in page.rows">
       <create-row-button
         :index="index"></create-row-button>
-      <row :row="row" :class="{first: index == 0}"></row>
+      <row
+        :row="row"
+        :row-index="index"
+        :class="{first: index == 0}"></row>
     </template>
     <create-row-button></create-row-button>
   </div>

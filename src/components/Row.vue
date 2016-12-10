@@ -1,10 +1,9 @@
 <template>
   <div class="row border-bottom flex" :class="row.size">
     <block
-      v-for="(block, index) in row.blocks"
+      v-for="(block, key, index) in row.blocks"
       :title="block.title"
-      :index="index"
-      :row-index="rowIndex"
+      :row="row"
       :class="{first: index == 0}"></block>
   </div>
 </template>
@@ -26,7 +25,6 @@ export default {
       type: Object,
       default: () => {},
     },
-    rowIndex: Number,
   },
 };
 </script>

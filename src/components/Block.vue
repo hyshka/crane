@@ -26,8 +26,7 @@ export default {
   },
   props: {
     title: String,
-    index: Number,
-    rowIndex: Number,
+    row: Object,
   },
   // computed: mapGetters([
   //   'dialogIsOpen',

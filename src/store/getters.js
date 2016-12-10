@@ -2,7 +2,7 @@ export default {
   /*
   * Projects
   */
-  projects: state => state.projects,
+  project: state => state.projects[state.route.params.id],
 
   /*
   * Pages

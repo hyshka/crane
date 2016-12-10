@@ -1,24 +1,12 @@
 <template>
   <div id="app">
-    <project
-      v-for="project in projects"
-      :project="project">
-    </project>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Project from 'components/Project';
-import { mapGetters } from 'vuex';
-
 export default {
   name: 'app',
-  components: {
-    Project,
-  },
-  computed: mapGetters([
-    'projects',
-  ]),
 };
 </script>
 

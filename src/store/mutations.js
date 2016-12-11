@@ -30,7 +30,7 @@ export default handleMutations({
   * Rows
   */
   CREATE_ROW: (state, mutation) => {
-    console.log('create row', mutation, mutation.index);
+    console.log('create row', mutation);
 
     const row = {
       size: mutation.size,
@@ -41,7 +41,7 @@ export default handleMutations({
       ],
     };
 
-    state.projects[state.route.params.id].pages[0].rows.splice(mutation.index, 0, row);
+    state.projects[state.route.params.id].pages[0].rows.splice(mutation.rowIndex, 0, row);
   },
   DELETE_ROW: (state, mutation) => {
     console.log('delete row', mutation);
@@ -55,8 +55,8 @@ export default handleMutations({
   */
   CREATE_BLOCK: (state, mutation) => {
     console.log('create block', mutation);
-    state.dialog.isOpen = false;
-    state.blocks.push(mutation);
+    // state.dialog.isOpen = false;
+    // state.blocks.push(mutation);
   },
   DELETE_BLOCK: (state, mutation) => {
     console.log('delete block', mutation);
@@ -64,7 +64,8 @@ export default handleMutations({
   UPDATE_BLOCK: (state, mutation) => {
     console.log('update block', mutation);
 
-    state.projects[0].pages[0].rows[mutation.rowIndex].blocks[mutation.index].title = mutation.title;
+    state.projects[state.route.params.id].pages[0]
+      .rows[mutation.rowIndex].blocks[mutation.blockIndex].title = mutation.title;
   },
 
   /*

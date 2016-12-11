@@ -2,13 +2,14 @@
   <div class="page mb4">
     <template v-for="(row, index) in page.rows">
       <create-row-button
-        :index="index"></create-row-button>
+        :rowIndex="index"></create-row-button>
       <row
         :row="row"
+        :rowIndex="index"
         :class="{first: index == 0}"></row>
     </template>
     <create-row-button
-      :index="page.rows.length"></create-row-button>
+      :rowIndex="page.rows.length"></create-row-button>
   </div>
 </template>
 

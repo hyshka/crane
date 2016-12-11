@@ -1,80 +1,80 @@
 <template>
   <div class="block-item flex items-center border-right">
     <label class="label block mx-auto h1 m0 center caps"
-      :class="{ 'display-none': isEditing }"
-      @dblclick="isEditing = !isEditing">{{ title }}</label>
+      :class="{ 'display-none': focused }"
+      @dblclick="focused = true">{{ title }}</label>
     <textarea class="edit h1 m0 p0 border-none border-box center caps" type="text"
-      :class="{ 'display-none': !isEditing }"
+      :class="{ 'display-none': !focused }"
+      :style="{ 'height': height }"
       :value="title"
-      v-block-focus=""
+      v-focus="focused"
       @input="buildBlock"
-      @blur="isEditing = !isEditing"
-      @keyup.esc="isEditing = !isEditing">
+      @focus="focused = true"
+      @blur="focused = false"
+      @keyup.esc="focused = false"
+      @keydown.shift.enter="focused = false">
     </textarea>
   </div>
 </template>
 
 <script>
-// import AddBlockDialog from 'components/AddBlockDialog';
-// import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
+import { focus } from 'vue-focus';
 
 export default {
   name: 'block',
-  components: {
-    // AddBlockDialog,
-  },
   props: {
     title: String,
-    row: Object,
+    rowIndex: Number,
+    blockIndex: Number,
   },
-  // computed: mapGetters([
-  //   'dialogIsOpen',
-  // ]),
   data() {
     return {
       isEditing: false,
-      // block: {
-      //   title: this.initialTitle,
-      // },
+      focused: false,
+      height: 0,
     };
   },
+  // computed: {
+  //   height() {
+  //   },
+  // },
   methods: {
     ...mapActions([
       'updateBlock',
     ]),
     buildBlock(event) {
       const mutation = {
-        title: event.target.value,
-        index: this.index,
+        title: event.target.value.trim(),
+        blockIndex: this.blockIndex,
         rowIndex: this.rowIndex,
       };
 
       this.updateBlock(mutation);
+      this.calcHeight();
     },
-    // editTodo(block) {
-    //   this.editedBlock = block;
-    // },
-    // doneEdit(block) {
-    //   if (!this.editedBlock) {
-    //     return;
-    //   }
-    //   this.editedBlock = null;
-    //   this.block.title = block.title.trim();
-    // },
-    // cancelEdit() {
-    //   this.editedBlock = null;
-    // },
+    calcHeight() {
+      // console.log('calcHeight', this);
+      const label = this.$el.querySelector('.label');
+      // console.log('label height', label.offsetHeight);
+      this.height = label.offsetHeight;
+    },
+  },
+  mounted() {
+    this.calcHeight();
   },
   // a custom directive to wait for the DOM to be updated
   // before focusing on the input field.
   // http://vuejs.org/guide/custom-directive.html
+  // directives: {
+  //   'block-focus': function blockFocus(el, value) {
+  //     if (value) {
+  //       el.focus();
+  //     }
+  //   },
+  // },
   directives: {
-    'block-focus': function blockFocus(el, value) {
-      if (value) {
-        el.focus();
-      }
-    },
+    focus,
   },
 };
 </script>
@@ -102,5 +102,6 @@ textarea {
 
 .label {
   white-space: pre;
+  cursor: text;
 }
 </style>

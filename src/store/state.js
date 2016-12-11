@@ -2,8 +2,8 @@ export default {
   dialog: {
     isOpen: false,
   },
-  projects: [
-    {
+  projects: {
+    'lift-interactive': {
       title: 'Lift Interactive',
       pages: [
         {
@@ -13,7 +13,7 @@ export default {
               size: 'large',
               blocks: [
                 {
-                  title: 'Banner Image w/ Primary Message & CTA',
+                  title: 'Banner Image w/\nPrimary Message & CTA',
                 },
               ],
             },
@@ -64,5 +64,5 @@ export default {
         },
       ],
     },
-  ],
+  },
 };

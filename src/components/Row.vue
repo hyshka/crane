@@ -3,7 +3,8 @@
     <block
       v-for="(block, index) in row.blocks"
       :title="block.title"
-      :row="row"
+      :rowIndex="rowIndex"
+      :blockIndex="index"
       :class="{first: index == 0}"></block>
   </div>
 </template>
@@ -25,6 +26,7 @@ export default {
       type: Object,
       default: () => {},
     },
+    rowIndex: Number,
   },
 };
 </script>

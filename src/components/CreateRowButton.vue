@@ -2,7 +2,7 @@
   <div class="center relative button-wrapper">
     <size-selector
       v-if="showSelector"
-      :index="index"
+      :rowIndex="rowIndex"
       @close="showSelector = false"></size-selector>
     <button class="button h1 p2 border-none circle absolute" @click="showSelector = !showSelector">
       +
@@ -20,7 +20,7 @@ export default {
     SizeSelector,
   },
   props: {
-    index: Number,
+    rowIndex: Number,
   },
   data() {
     return {

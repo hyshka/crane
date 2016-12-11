@@ -26,13 +26,13 @@ import { mapActions } from 'vuex';
 export default {
   name: 'add-block-dialog',
   props: {
-    index: Number,
+    rowIndex: Number,
   },
   data() {
     return {
       row: {
         size: '',
-        index: this.index,
+        rowIndex: this.rowIndex,
       },
       availableSizes: [
         'small',

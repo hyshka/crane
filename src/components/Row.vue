@@ -1,7 +1,7 @@
 <template>
   <div class="row border-bottom flex" :class="row.size">
     <block
-      v-for="(block, key, index) in row.blocks"
+      v-for="(block, index) in row.blocks"
       :title="block.title"
       :row="row"
       :class="{first: index == 0}"></block>

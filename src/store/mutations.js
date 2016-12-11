@@ -1,6 +1,7 @@
 // Disable this rule for this file only
 /* eslint-disable no-param-reassign, no-console */
 import { handleMutations } from 'vuex-actions';
+// import faker from 'faker';
 
 
 export default handleMutations({
@@ -29,7 +30,7 @@ export default handleMutations({
   * Rows
   */
   CREATE_ROW: (state, mutation) => {
-    console.log('create row', mutation);
+    console.log('create row', mutation, mutation.index);
 
     const row = {
       size: mutation.size,
@@ -40,11 +41,7 @@ export default handleMutations({
       ],
     };
 
-    if (mutation.index) {
-      state.projects[0].pages[0].rows.splice(mutation.index, 0, row);
-    } else {
-      state.projects[0].pages[0].rows.push(row);
-    }
+    state.projects[state.route.params.id].pages[0].rows.splice(mutation.index, 0, row);
   },
   DELETE_ROW: (state, mutation) => {
     console.log('delete row', mutation);

@@ -20,7 +20,7 @@ export default {
     SizeSelector,
   },
   props: {
-    row: Object,
+    index: Number,
   },
   data() {
     return {

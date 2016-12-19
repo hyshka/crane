@@ -1,23 +1,23 @@
 <template>
   <div class="block-item flex items-center border-right">
     <label class="label block mx-auto h1 m0 center caps"
-      :class="{ 'display-none': focused }"
+      :class="{ 'my-hide': focused }"
       @dblclick="focused = true">{{ title }}</label>
-    <textarea class="edit h1 m0 p0 border-none border-box center caps" type="text"
-      :class="{ 'display-none': !focused }"
-      :style="{ 'height': height }"
+    <textarea class="textarea h1 m0 p0 border-none border-box center caps" type="text"
+      :class="{ 'my-hide': !focused }"
       :value="title"
       v-focus="focused"
-      @input="buildBlock"
+      @input="setTextareaHeight; buildBlock($event)"
       @focus="focused = true"
       @blur="focused = false"
-      @keyup.esc="focused = false"
-      @keydown.shift.enter="focused = false">
+      @keyup.esc="focused = false">
+      <!-- @keydown.shift.enter="focused = false" -->
     </textarea>
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapActions } from 'vuex';
 import { focus } from 'vue-focus';
 
@@ -32,7 +32,7 @@ export default {
     return {
       isEditing: false,
       focused: false,
-      height: 0,
+      // height: 0,
     };
   },
   // computed: {
@@ -51,17 +51,19 @@ export default {
       };
 
       this.updateBlock(mutation);
-      this.calcHeight();
+      this.setTextareaHeight();
     },
-    calcHeight() {
-      // console.log('calcHeight', this);
+    setTextareaHeight() {
       const label = this.$el.querySelector('.label');
-      // console.log('label height', label.offsetHeight);
-      this.height = label.offsetHeight;
+      const textarea = this.$el.querySelector('.textarea');
+      console.log('label height', label.offsetHeight);
+      Vue.nextTick(() => {
+        textarea.style.height = `${label.offsetHeight}px`;
+      });
     },
   },
   mounted() {
-    this.calcHeight();
+    this.setTextareaHeight();
   },
   // a custom directive to wait for the DOM to be updated
   // before focusing on the input field.
@@ -103,5 +105,13 @@ textarea {
 .label {
   white-space: pre;
   cursor: text;
+}
+
+.my-hide {
+  position: absolute !important;
+  /*height: 1px;*/
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
 }
 </style>

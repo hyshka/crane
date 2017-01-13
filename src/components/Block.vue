@@ -3,9 +3,10 @@
     <div
       class="content mx-auto h1 m0 center caps"
       contenteditable
-      @input="buildBlock($event)"
+      v-html="formattedTitle"
+      @blur="buildBlock($event)"
       @keyup.esc="blurContent"
-      @keydown.shift.enter="blurContent">{{ formattedTitle }}</div>
+      @keydown.shift.enter="blurContent"></div>
     </textarea>
   </div>
 </template>
@@ -103,7 +104,7 @@ export default {
       this.updateBlock(mutation);
     },
     blurContent() {
-      console.log('blur');
+      // console.log('blur');
       this.$el.querySelector('.content').blur();
       window.getSelection().removeAllRanges();
     },

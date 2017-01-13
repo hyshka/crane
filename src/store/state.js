@@ -13,7 +13,7 @@ export default {
               size: 'large',
               blocks: [
                 {
-                  title: 'Banner Image w/\nPrimary Message & CTA',
+                  title: 'Banner Image w/<br>Primary Message & CTA',
                 },
               ],
             },

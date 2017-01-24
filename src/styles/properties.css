@@ -24,8 +24,8 @@
   --rowLarge: 400px;
 
   /* add button */
-  --buttonBackground: #eee;
-  --buttonColor: #616161;
+  --buttonBackground: #616161;
+  --buttonColor: #eee;
 
   /* size selector */
   --sizeSelectorBackground: #eee;
@@ -33,4 +33,9 @@
   /* transitions */
   --transitionDuration: 0.3s;
   --transitionTiming: ease;
+
+  /* colors */
+  --c-shade-1: #eee;
+  --c-shade-2: #616161;
+  --c-shade-3: #1e1e1e;
 }

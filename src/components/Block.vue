@@ -1,13 +1,16 @@
 <template>
-  <div class="block-item flex items-center border-right">
+  <div class="block-item flex items-center border-right relative">
     <div
       class="content mx-auto h1 m0 center caps"
       contenteditable
       v-html="formattedTitle"
       @blur="buildBlock($event)"
       @keyup.esc="blurContent"
-      @keydown.shift.enter="blurContent"></div>
-    </textarea>
+      @keydown.shift.enter="blurContent"
+      @keyup.shift.delete="localDeleteBlock"></div>
+    <button class="block-delete h1 p2 border-none circle absolute right-0 top-0" @click="localDeleteBlock">
+      ×
+    </button>
   </div>
 </template>
 
@@ -41,6 +44,7 @@ export default {
   methods: {
     ...mapActions([
       'updateBlock',
+      'deleteBlock',
     ]),
     buildBlock(event) {
       let title = event.target.innerHTML;
@@ -108,6 +112,14 @@ export default {
       this.$el.querySelector('.content').blur();
       window.getSelection().removeAllRanges();
     },
+    localDeleteBlock() {
+      const mutation = {
+        blockIndex: this.blockIndex,
+        rowIndex: this.rowIndex,
+      };
+
+      this.deleteBlock(mutation);
+    },
   },
 };
 </script>
@@ -131,5 +143,18 @@ export default {
 
 .first {
   border-left: 1px var(--borderStyle) var(--borderColor);
+}
+
+.block-delete {
+  outline: none;
+  line-height: 1rem;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--c-shade-2);
+
+  &:hover {
+    color: var(--c-shade-1);
+    background-color: var(--c-shade-2);
+  }
 }
 </style>

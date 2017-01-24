@@ -60,12 +60,22 @@ export default handleMutations({
   },
   DELETE_BLOCK: (state, mutation) => {
     console.log('delete block', mutation);
+
+    state.projects[state.route.params.id].pages[0]
+      .rows[mutation.rowIndex].blocks.splice(mutation.blockIndex, 1);
+
+    // if row is empty, delete it
+    if (!state.projects[state.route.params.id].pages[0].rows[mutation.rowIndex].blocks.length) {
+      state.projects[state.route.params.id].pages[0].rows.splice(mutation.rowIndex, 1);
+    }
   },
   UPDATE_BLOCK: (state, mutation) => {
     console.log('update block', mutation);
 
-    state.projects[state.route.params.id].pages[0]
-      .rows[mutation.rowIndex].blocks[mutation.blockIndex].title = mutation.title;
+    if (state.projects[state.route.params.id].pages[0].rows[mutation.rowIndex].blocks[mutation.blockIndex]) {
+      state.projects[state.route.params.id].pages[0]
+        .rows[mutation.rowIndex].blocks[mutation.blockIndex].title = mutation.title;
+    }
   },
 
   /*

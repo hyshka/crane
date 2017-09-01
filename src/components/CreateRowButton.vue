@@ -1,6 +1,6 @@
 <template>
-  <div class="center relative button-wrapper">
-    <div class="absolute button-container">
+  <div class="center relative">
+    <div class="absolute right-0 left-0 button-container">
       <div class="flex flex-column items-center justify-center">
         <button class="button h1 p2 border-none circle" @click="showSelector = !showSelector">
           +

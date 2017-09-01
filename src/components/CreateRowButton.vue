@@ -1,12 +1,16 @@
 <template>
   <div class="center relative button-wrapper">
-    <size-selector
-      v-if="showSelector"
-      :rowIndex="rowIndex"
-      @close="showSelector = false"></size-selector>
-    <button class="button h1 p2 border-none circle absolute" @click="showSelector = !showSelector">
-      +
-    </button>
+    <div class="absolute button-container">
+      <div class="flex flex-column items-center justify-center">
+        <button class="button h1 p2 border-none circle" @click="showSelector = !showSelector">
+          +
+        </button>
+        <size-selector
+          v-if="showSelector"
+          :rowIndex="rowIndex"
+          @close="showSelector = false"></size-selector>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -34,9 +38,11 @@ export default {
 <style scoped>
 @import "../styles/properties.css";
 
-.button-wrapper {
+.button-container {
   transition: all var(--transitionDuration) var(--transitionTiming);
   opacity: 0;
+  margin-top: -24px;
+  z-index: 1;
 
   &:hover {
     opacity: 1;
@@ -49,8 +55,5 @@ export default {
   line-height: 1rem;
   color: var(--buttonColor);
   cursor: pointer;
-  margin-top: -24px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 </style>

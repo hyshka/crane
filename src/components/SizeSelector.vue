@@ -1,6 +1,6 @@
 <template>
   <transition name="modal">
-    <div class="modal-container absolute left-0 right-0 z4">
+    <div class="modal-container z4">
       <div class="modal-content relative max-width-1 mx-auto p2 rounded">
         <p class="h2 mt0 mb2">
           <template v-for="size in availableSizes">
@@ -54,12 +54,12 @@ export default {
 @import "../styles/properties.css";
 
 .modal-container {
-  top: 58px;
   transition: all var(--transitionDuration) var(--transitionTiming);
 }
 
 .modal-content {
   background-color: var(--sizeSelectorBackground);
+  margin-top: 10px;
   /*box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);*/
 
   &::before {

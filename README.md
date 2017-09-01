@@ -24,7 +24,7 @@ npm run dev
 npm run build
 
 # deploy to now.sh
-now -p dist/
+npm run deploy
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
@@ -32,4 +32,4 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ## Demo
 See: http://localhost:8080/#/projects/lift-interactive for test data.
 
-Or on now.sh: https://dist-bzxbkiuzuu.now.sh/#/projects/lift-interactive
+Or on now.sh: https://crane-cptcrlzkzg.now.sh/#/projects/lift-interactive
